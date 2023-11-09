@@ -10,8 +10,6 @@ function Currencies(props) {
   const [currencyPrices, setCurrencyPrices] = useState(props.rates);
   const [currency, setCurrency] = useState("USD");
 
-  console.log(currency);
-
   return (
     <div className="px-4 py-6">
       <Select
@@ -22,18 +20,20 @@ function Currencies(props) {
       />{" "}
       <div className="px-1">
         {currencyPrices &&
-          currencies.map((curren) => (
-            <>
-              <CurrentAmount
-                utils={{
-                  amount: 1,
-                  toCurrency: curren,
-                  fromCurrency: currency,
-                  currencyPrices,
-                }}
-              />
-            </>
-          ))}
+          currencies.map((curren) =>
+            curren !== currency ? (
+              <div key={curren}>
+                <CurrentAmount
+                  utils={{
+                    amount: 1,
+                    toCurrency: curren,
+                    fromCurrency: currency,
+                    currencyPrices,
+                  }}
+                />
+              </div>
+            ) : null
+          )}
       </div>
     </div>
   );

@@ -16,8 +16,6 @@ function Home(props) {
   const [isLoading, setIsLoading] = useState(false);
   const [utils, setUtils] = useState(null);
 
-  console.log(currencyPrices);
-
   const getCurrentPrice = () => {
     setIsLoading(true);
     setUtils({
@@ -56,10 +54,10 @@ function Home(props) {
 
       {isLoading ? (
         <div className="my-4 text-center flex justify-center">
-          <div class="h-12 w-12 animate-spin rounded-full border-4 border-blue-600 border-t-transparent" />
+          <div className="h-12 w-12 animate-spin rounded-full border-4 border-blue-600 border-t-transparent" />
         </div>
       ) : utils ? (
-        <div className="flex justify-center"><CurrentAmount utils={utils} /></div>
+        <div className="flex justify-center"><CurrentAmount utils={utils} isTwo={100} /></div>
       ) : null}
     </div>
   );
